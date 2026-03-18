@@ -3,7 +3,7 @@ const router = express.Router()
 
 const Post = require("../models/Post")
 const User = require("../models/User")
-// Create User (helper route)
+
 router.post("/user", async (req, res) => {
     try {
         const user = await User.create(req.body);
@@ -13,7 +13,7 @@ router.post("/user", async (req, res) => {
     }
 });
 
-// Create Post
+
 router.post("/", async (req, res) => {
     try {
         const post = await Post.create(req.body);
@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
     }
 });
 
-// Get All Posts with Author (populate)
+
 router.get("/", async (req, res) => {
     try {
         const posts = await Post.find().populate("authorId");
@@ -33,7 +33,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-// Delete Post
+
 router.delete("/:id", async (req, res) => {
     try {
         await Post.findByIdAndDelete(req.params.id);
@@ -43,7 +43,7 @@ router.delete("/:id", async (req, res) => {
     }
 });
 
-// Top 3 Recent Posts
+
 router.get("/top", async (req, res) => {
     try {
         const posts = await Post.find()
